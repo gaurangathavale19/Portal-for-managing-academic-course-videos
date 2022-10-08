@@ -1,0 +1,44 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button routerLinkActive="ative item" [routerLinkActiveOptions]="{exact : true}" routerLink="/login" class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>home</mat-icon>
+    </button>
+    <span>Internal Portal</span>
+    <span class="menu-on-right"></span>
+    <button mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/login">Login</button>
+    <button mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/register">Register</button>
+</mat-toolbar>
+<div class="container" style="text-align: center;">
+  <h1>REGISTER</h1>
+<form #loginform="ngForm" class="example-form" (ngSubmit)="register()">
+    <small style="color: red;">{{message}}</small>
+    <br>
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput [formControl]="nameFormControl" placeholder="Enter your Name" name="name" [(ngModel)] = "user.name" required>
+        <mat-hint>Not you email</mat-hint>
+      </mat-form-field>
+      <br><br>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput [formControl]="emailFormControl" placeholder="Enter your Email Id" name="emailId" [(ngModel)] = "user.emailId" required>
+        <mat-hint>Keep it safe xD!</mat-hint>
+      </mat-form-field>
+      <br><br>
+      <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput [formControl]="usernameFormControl" placeholder="Enter your Username" name="userName" [(ngModel)] = "user.userName" required>
+        <mat-hint>Keep it safe xD!</mat-hint>
+      </mat-form-field>
+      <br><br>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput [formControl]="passwordFormControl" placeholder="Enter your Password" name="password" [(ngModel)] = "user.password" required>
+        <mat-hint>Keep it safe xD!</mat-hint>
+      </mat-form-field>
+      <br><br>
+    <button type="submit" mat-raised-button color="primary">Register</button>
+</form>
+<br>
+</div>
+<!-- <span class="register" (click) = "registerUser()">New User? <strong>Register Now</strong></span><br><br> -->
+<!-- <span class="register" (click) = "openDialog()"><strong>Forgot Password ?</strong></span> -->

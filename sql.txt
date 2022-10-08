@@ -1,0 +1,51 @@
+CREATE TABLE USER1 (
+   userId SERIAL,
+   name VARCHAR(50),
+   email VARCHAR(45),
+   username VARCHAR(50),
+   password VARCHAR(50),
+   PRIMARY KEY(userId)
+);
+
+CREATE TABLE CATEGORY (
+	catId SERIAL,
+	catName VARCHAR(50),
+	createdOn DATE,
+	PRIMARY KEY(catId)
+);
+
+CREATE TABLE SUBSCRIPTION (
+   subscriptionId SERIAL,
+   subscriberId INT,
+   catId INT,
+   PRIMARY KEY(subscriptionId),
+   FOREIGN KEY(subscriberId) REFERENCES user1(userId),
+   FOREIGN KEY(catId) REFERENCES category(catId)
+);
+
+CREATE TABLE VIDEO (
+   vidId SERIAL,
+   vidName VARCHAR(50),
+   vidDescription VARCHAR(100),
+   vidPath VARCHAR(50),
+   uploadedOn DATE,
+   status VARCHAR(10),
+   likes INT,
+   creatorId INT,
+   catId INT,
+   PRIMARY KEY(vidId),
+   FOREIGN KEY(creatorId) REFERENCES user1(userId),
+   FOREIGN KEY(catId) REFERENCES category(catId)
+);
+
+CREATE TABLE COMMENT (
+   commentId SERIAL,
+   comment VARCHAR(100),
+   commentedOn DATE,
+   commentorId INT,
+   catId INT,
+   vidId INT,
+   PRIMARY KEY(commentId),
+   FOREIGN KEY(commentorId) REFERENCES user1(userId),
+   FOREIGN KEY(vidId) REFERENCES video(vidId)
+);

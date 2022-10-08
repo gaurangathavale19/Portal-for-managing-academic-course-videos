@@ -1,0 +1,17 @@
+package com.example.css699.queries;
+
+public class Queries {
+    public Queries() {
+
+    }
+
+    public static final String ADD_USER = "INSERT INTO USER1 (name, email, username, password) VALUES (?,?,?,?)";
+    public static final String GET_USER_BY_USERNAME = "SELECT * FROM USER1 WHERE username = ?";
+    public static final String GET_VIDEO_BY_PATH_NAME = "SELECT * FROM VIDEO WHERE vidPath = ?";
+    public static final String UPLOAD_VIDEO = "INSERT INTO VIDEO (vidPath) VALUES (?)";
+    public static final String UPDATE_VIDEO_DATA = "UPDATE VIDEO SET vidName = ?, vidDescription = ?, status = 'PENDING' WHERE vidId = ?";
+    public static final String GET_ALL_APPROVED_VIDEOS = "SELECT * FROM VIDEO where status = 'APPROVED'";
+    public static final String GET_ALL_PENDING_VIDEOS = "ELECT * FROM VIDEO where status = 'PENDING'";
+
+
+}
