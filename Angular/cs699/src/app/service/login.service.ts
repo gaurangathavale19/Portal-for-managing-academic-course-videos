@@ -17,7 +17,12 @@ export class LoginService {
 
   public setUser(user: User){
     this.user = user;
+    console.log(user);
     localStorage.setItem('user', JSON.stringify(this.user));
+  }
+
+  public getUser(){
+    return localStorage.getItem('user');
   }
 
   public userLoginSpringBoot(user: User): Observable<any>{

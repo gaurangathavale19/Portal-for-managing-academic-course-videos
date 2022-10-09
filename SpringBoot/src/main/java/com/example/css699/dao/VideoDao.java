@@ -1,6 +1,7 @@
 package com.example.css699.dao;
 
 import com.example.css699.models.Video;
+import com.example.css699.models.VideoWithData;
 import com.example.css699.queries.Queries;
 import com.example.css699.rowmapper.VideoRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +9,14 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 
@@ -56,5 +61,19 @@ public class VideoDao {
 
     public List<Video> getAllVPendingVideos(){
         return jdbcTemplate.query(Queries.GET_ALL_PENDING_VIDEOS, VideoRowMapper.lambda);
+    }
+
+    public List<Video> getMyVideos(String userName){
+        return jdbcTemplate.query(Queries.GET_MY_VIDEOS, VideoRowMapper.lambda , userName);
+    }
+
+    public VideoWithData getVideoByVideoId(int vidId) throws IOException {
+        VideoWithData videoWithData = jdbcTemplate.queryForObject(Queries.GET_VIDEO_BY_VIDEO_ID, VideoRowMapper.lambdaWithData, vidId);
+        File videoFile = new File(videoWithData.getVidPath());
+        FileInputStream fileInputStream = new FileInputStream(videoFile);
+        byte[] videoContent = new byte[(int) videoFile.length()];
+        fileInputStream.read(videoContent);
+        videoWithData.setData(Base64.getEncoder().encodeToString(videoContent));
+        return videoWithData;
     }
 }

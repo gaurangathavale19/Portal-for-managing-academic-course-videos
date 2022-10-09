@@ -11,7 +11,9 @@ public class Queries {
     public static final String UPLOAD_VIDEO = "INSERT INTO VIDEO (vidPath) VALUES (?)";
     public static final String UPDATE_VIDEO_DATA = "UPDATE VIDEO SET vidName = ?, vidDescription = ?, status = 'PENDING' WHERE vidId = ?";
     public static final String GET_ALL_APPROVED_VIDEOS = "SELECT * FROM VIDEO where status = 'APPROVED'";
-    public static final String GET_ALL_PENDING_VIDEOS = "ELECT * FROM VIDEO where status = 'PENDING'";
+    public static final String GET_ALL_PENDING_VIDEOS = "SELECT * FROM VIDEO where status = 'PENDING'";
+    public static final String GET_MY_VIDEOS = "SELECT * FROM VIDEO WHERE creatorid = (SELECT userid FROM USER1 WHERE username = ?)";
+    public static final String GET_VIDEO_BY_VIDEO_ID = "SELECT * FROM VIDEO WHERE vidId = ?";
 
 
 }

@@ -18,6 +18,7 @@ import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
 import { HomepageComponent } from './homepage/homepage.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { PlaySectionComponent } from './play-section/play-section.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { RegistrationComponent } from './registration/registration.component';
     AppComponent,
     LoginComponent,
     HomepageComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    PlaySectionComponent
   ],
   imports: [
     BrowserModule,

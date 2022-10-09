@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button routerLinkActive="ative item" [routerLinkActiveOptions]="{exact : true}" routerLink="/login" class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>home</mat-icon>
+    </button>
+    <span>Internal Portal</span>
+    <span class="menu-on-right"></span>
+    <button mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/login">Logout</button>
+</mat-toolbar>
+
+<video *ngIf="videoUrl" 
+        [src]="videoUrl"  width="750px" height="450px" controls autoplay preload="none"
+		poster=''
+        data-setup='{"aspectRatio":"750:450"}'>
+</video>
