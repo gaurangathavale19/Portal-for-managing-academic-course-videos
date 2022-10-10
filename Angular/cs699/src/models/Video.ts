@@ -4,7 +4,8 @@ export class Video {
     vidName: String;
     vidDescription: String;
     uploadedOn: Date;
-    creatorId: Number;
+    creator: Number;
+    creatorName: String;
     status: String;
     file: File;
     data: String;

@@ -1,8 +1,10 @@
 package com.example.css699.dao;
 
+import com.example.css699.models.User;
 import com.example.css699.models.Video;
 import com.example.css699.models.VideoWithData;
 import com.example.css699.queries.Queries;
+import com.example.css699.rowmapper.UserRowMapper;
 import com.example.css699.rowmapper.VideoRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -76,4 +78,13 @@ public class VideoDao {
         videoWithData.setData(Base64.getEncoder().encodeToString(videoContent));
         return videoWithData;
     }
+
+    public User getCreatorNameFromCreatorId(int creatorId){
+    return jdbcTemplate.queryForObject(Queries.GET_CREATOR_NAME_FROM_CREATOR_ID, UserRowMapper.lambda, creatorId);
+    }
+
+    public int likeAVideo(int vidId){
+        return jdbcTemplate.update(Queries.LIKE_A_VIDEO, vidId);
+    }
+
 }

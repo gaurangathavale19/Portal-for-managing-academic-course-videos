@@ -1,5 +1,6 @@
 package com.example.css699.service;
 
+import com.example.css699.models.User;
 import com.example.css699.models.Video;
 import com.example.css699.models.VideoWithData;
 import org.springframework.stereotype.Service;
@@ -23,4 +24,8 @@ public interface VideoService {
     public List<Video> getMyVideos(String userName);
 
     public VideoWithData getVideoByVideoId(int vidID) throws IOException;
+
+    public User getCreatorNameFromCreatorId(int creatorId);
+
+    public int likeAVideo(int vidId);
 }

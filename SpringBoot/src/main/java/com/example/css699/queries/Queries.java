@@ -14,6 +14,8 @@ public class Queries {
     public static final String GET_ALL_PENDING_VIDEOS = "SELECT * FROM VIDEO where status = 'PENDING'";
     public static final String GET_MY_VIDEOS = "SELECT * FROM VIDEO WHERE creatorid = (SELECT userid FROM USER1 WHERE username = ?)";
     public static final String GET_VIDEO_BY_VIDEO_ID = "SELECT * FROM VIDEO WHERE vidId = ?";
+    public static final String GET_CREATOR_NAME_FROM_CREATOR_ID = "SELECT * FROM USER1 WHERE userid = ?";
+    public static final String LIKE_A_VIDEO = "UPDATE VIDEO SET likes = likes + 1 WHERE vidid = ?";
 
 
 }

@@ -1,5 +1,6 @@
 package com.example.css699.controllers;
 
+import com.example.css699.models.User;
 import com.example.css699.models.Video;
 import com.example.css699.models.VideoWithData;
 import com.example.css699.service.VideoService;
@@ -51,5 +52,18 @@ public class VideoController {
     public VideoWithData getVideoByVideoId(@PathVariable int vidId) throws IOException {
         return videoService.getVideoByVideoId(vidId);
     }
+
+    @GetMapping("/getCreatorNameFromCreatorId/{creatorId}")
+    @CrossOrigin(origins="http://localhost:4200")
+    public User getCreatorNameFromCreatorId(@PathVariable int creatorId){
+        return videoService.getCreatorNameFromCreatorId(creatorId);
+    }
+
+    @PutMapping("/likeAVideo")
+    @CrossOrigin(origins="http://localhost:4200")
+    public int likeAVideo(@RequestBody int vidId){
+        return videoService.likeAVideo(vidId);
+    }
+
 
 }

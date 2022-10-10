@@ -25,19 +25,33 @@ export class HomepageComponent implements OnInit {
     this.videoService.getAllVideosSpringBoot().subscribe(
       resp => {
         this.video = resp;
+        console.log(this.video[0]);
+        console.log(this.video);
         this.dataSource = this.video;
-        console.log(this.dataSource);
+        for (let i = 0; i < resp.length; i++){
+          this.videoService.getCreatorNameFromCreatorIdSpringBoot(this.video[i].creator).subscribe(
+            resp1 => {
+              this.video[i].creatorName = resp1.userName;
+              console.log(this.video);
+              this.dataSource = this.video;
+            }
+          )
+          
+        }
       }
     )
   }
 
   public allVideos() {
+    this.displayedColumns = ['SrNo', 'title', 'description', 'category', 'createdBy', 'play']
     this.dataSource = this.video;
     console.log(this.dataSource);
   }
 
   public myVideos(){
     this.user = JSON.parse(this.loginSevice.getUser());
+    this.displayedColumns = ['SrNo', 'title', 'description', 'category', 'play']
+    console.log(this.user);
     this.videoService.getMyVideosSpringBoot(this.user.userName).subscribe(
       resp => {
         this.dataSource = resp;
@@ -52,6 +66,7 @@ export class HomepageComponent implements OnInit {
         this.commonService.setVideo(resp);
         this.video = resp
         console.log(this.video);
+        this.videoService.setVideo(vidId);
         this.router.navigate(['/playSection', vidId]);
       }
     );
