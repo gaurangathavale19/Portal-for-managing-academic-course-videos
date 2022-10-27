@@ -10,6 +10,7 @@ public class Video {
     private Date uploadedOn;
     private String status;
     private int creatorId;
+    private int likes;
     public int getVidId() {
         return vidId;
     }
@@ -64,5 +65,21 @@ public class Video {
 
     public void setCreator(int creatorId) {
         this.creatorId = creatorId;
+    }
+
+    public int getCreatorId() {
+        return creatorId;
+    }
+
+    public void setCreatorId(int creatorId) {
+        this.creatorId = creatorId;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
     }
 }

@@ -11,6 +11,7 @@ public class VideoWithData {
     private String status;
     private int creatorId;
     private String data;
+    private int likes;
     public int getVidId() {
         return vidId;
     }
@@ -73,5 +74,21 @@ public class VideoWithData {
 
     public void setData(String data) {
         this.data = data;
+    }
+
+    public int getCreatorId() {
+        return creatorId;
+    }
+
+    public void setCreatorId(int creatorId) {
+        this.creatorId = creatorId;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
     }
 }

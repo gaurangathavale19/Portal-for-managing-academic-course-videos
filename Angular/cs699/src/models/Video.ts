@@ -9,6 +9,7 @@ export class Video {
     status: String;
     file: File;
     data: String;
+    likes: Number;
 
     constructor() { }
   

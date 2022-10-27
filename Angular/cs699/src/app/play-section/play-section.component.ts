@@ -12,13 +12,32 @@ export class PlaySectionComponent implements OnInit {
 
   video: Video = new Video();
   videoUrl: String = '';
+  vidId: Number;
 
   constructor(private commonService: CommonService, private videoService: VideoService) { }
 
   ngOnInit(): void {
-    this.video = this.commonService.getVideo();
+    this.vidId = parseInt(this.videoService.getVideo());
     // console.log(this.video.data);
-    this.videoUrl = "data:video/mp4;base64," + this.video.data;
+    this.videoService.getVideoByVideoIdSpringBoot(this.vidId).subscribe(
+      resp => {
+        this.video = resp;
+        console.log(this.video);
+        this.videoUrl = "data:video/mp4;base64," + this.video.data;
+      }
+    )
+  }
+
+  ngOnChanges(): void {
+    this.vidId = parseInt(this.videoService.getVideo());
+    // console.log(this.video.data);
+    this.videoService.getVideoByVideoIdSpringBoot(this.vidId).subscribe(
+      resp => {
+        this.video = resp;
+        console.log(this.video);
+        this.videoUrl = "data:video/mp4;base64," + this.video.data;
+      }
+    )
   }
 
   @ViewChild("videoPlayer", { static: false }) videoplayer: ElementRef;
@@ -45,8 +64,13 @@ export class PlaySectionComponent implements OnInit {
   like(vidId: Number) {
     this.videoService.likeAVideoSpringBoot(vidId).subscribe(
       resp => {
-        this.video = resp;
-        console.log(this.video);
+        console.log(resp);
+        this.videoService.getVideoByVideoIdSpringBoot(vidId).subscribe(
+          resp => {
+            this.video = resp;
+            console.log(this.video);
+          }
+        )
       }
     )
   }

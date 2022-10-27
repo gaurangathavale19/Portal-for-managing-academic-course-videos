@@ -14,7 +14,7 @@
             data-setup='{"aspectRatio":"900:540"}'>
     </video>
     <div>
-        <button mat-raised-button color="primary" (click)="like(video.vidId)"><mat-icon>thumb_up</mat-icon></button>
+        <button mat-raised-button color="primary" (click)="like(video.vidId)"><mat-icon class="likes">thumb_up</mat-icon> {{video.likes}}</button>
         <button mat-raised-button color="primary" (click)="restart()">Restart</button>
         <button mat-raised-button color="primary" (click)="skip(-30)"><mat-icon>replay_30</mat-icon></button>
         <button mat-raised-button color="primary" (click)="skip(30)"><mat-icon>forward_30</mat-icon></button>

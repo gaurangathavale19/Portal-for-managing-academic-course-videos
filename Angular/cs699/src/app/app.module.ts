@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomepageComponent } from './homepage/homepage.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { PlaySectionComponent } from './play-section/play-section.component';
+import { UploadVideoComponent } from './upload-video/upload-video.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { PlaySectionComponent } from './play-section/play-section.component';
     LoginComponent,
     HomepageComponent,
     RegistrationComponent,
-    PlaySectionComponent
+    PlaySectionComponent,
+    UploadVideoComponent
   ],
   imports: [
     BrowserModule,

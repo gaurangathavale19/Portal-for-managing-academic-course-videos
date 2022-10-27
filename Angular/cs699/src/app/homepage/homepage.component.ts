@@ -72,4 +72,8 @@ export class HomepageComponent implements OnInit {
     );
   }
 
+  public removeUser(){
+    localStorage.removeItem('user');
+  }
+
 }

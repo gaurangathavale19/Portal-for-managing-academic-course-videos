@@ -31,6 +31,7 @@ public class VideoRowMapper {
         video.setVidId(record.getInt("vidId"));
         video.setUploadedOn(record.getDate("uploadedOn"));
         video.setStatus(record.getString("status"));
+        video.setLikes(record.getInt("likes"));
         return video;
     };
 
