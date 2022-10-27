@@ -1,0 +1,39 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button routerLinkActive="ative item" [routerLinkActiveOptions]="{exact : true}" routerLink="/login" class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>home</mat-icon>
+    </button>
+    <span>Internal Portal</span>
+    <span class="menu-on-right"></span>
+    <button mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/login" (click)="removeUser()">Logout</button>
+</mat-toolbar>
+
+<div class="container" style="text-align: center;">
+  <h1>UPLOAD</h1>
+<form #loginform="ngForm" class="example-form">
+    <!-- <small style="color: red;">{{message}}</small> -->
+    <br>
+      <mat-form-field appearance="outline">
+        <mat-label>Title</mat-label>
+        <input matInput placeholder="Enter the title" name="vidName" [(ngModel)] = "video.vidName" required>
+        <mat-hint>Not you email</mat-hint>
+      </mat-form-field>
+      <br><br>
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea matInput placeholder="Enter the description" name="vidDescription" [(ngModel)] = "video.vidDescription" required></textarea>
+        <mat-hint>Elaborate</mat-hint>
+      </mat-form-field>
+      <br><br>
+      <!-- <input type="file" class="form-control"> -->
+      <input type="file" id="actual-btn" class="form-control" hidden/>
+
+        <!-- our custom upload button -->
+        <label for="actual-btn">Choose File</label>
+
+        <!-- name of file chosen -->
+        <span id="file-chosen">No file chosen</span>
+
+      <br><br><br><br>
+    <button type="submit" mat-raised-button color="primary">Upload</button>
+</form>
+</div>
