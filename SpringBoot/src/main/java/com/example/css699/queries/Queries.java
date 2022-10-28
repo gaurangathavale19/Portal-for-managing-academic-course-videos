@@ -17,5 +17,7 @@ public class Queries {
     public static final String GET_CREATOR_NAME_FROM_CREATOR_ID = "SELECT * FROM USER1 WHERE userid = ?";
     public static final String LIKE_A_VIDEO = "UPDATE VIDEO SET likes = likes + 1 WHERE vidid = ?";
 
+    public static final String ADD_COMMENT = "INSERT INTO COMMENT(comment, commentedon, commentorid, vidid) VALUES (?,?,?,?)";
+
 
 }
