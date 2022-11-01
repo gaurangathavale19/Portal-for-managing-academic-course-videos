@@ -19,5 +19,7 @@ public class Queries {
 
     public static final String ADD_COMMENT = "INSERT INTO COMMENT(comment, commentedon, commentorid, vidid) VALUES (?,?,?,?)";
 
+    public static final String ADD_CATEGORY = "INSERT INTO CATEGORY(catName, createdon) VALUES (?,?)";
+
 
 }
