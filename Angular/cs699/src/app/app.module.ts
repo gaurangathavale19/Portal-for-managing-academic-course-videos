@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 
+
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatTableModule } from '@angular/material/table';
@@ -15,11 +16,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 import { HomepageComponent } from './homepage/homepage.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { PlaySectionComponent } from './play-section/play-section.component';
 import { UploadVideoComponent } from './upload-video/upload-video.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 
 @NgModule({
@@ -29,7 +32,8 @@ import { UploadVideoComponent } from './upload-video/upload-video.component';
     HomepageComponent,
     RegistrationComponent,
     PlaySectionComponent,
-    UploadVideoComponent
+    UploadVideoComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +49,8 @@ import { UploadVideoComponent } from './upload-video/upload-video.component';
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

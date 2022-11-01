@@ -1,5 +1,6 @@
 package com.example.css699.controllers;
 
+import com.example.css699.models.Like;
 import com.example.css699.models.User;
 import com.example.css699.models.Video;
 import com.example.css699.models.VideoWithData;
@@ -26,7 +27,8 @@ public class VideoController {
     @PostMapping("/saveVideo")
     @CrossOrigin(origins="http://localhost:4200")
     public Video saveVideo(@RequestBody Video video){
-            return videoService.saveVideo(video);
+        System.out.println(video.getCreator());
+        return videoService.saveVideo(video);
     }
 
     @GetMapping("/allVideos")
@@ -63,6 +65,30 @@ public class VideoController {
     @CrossOrigin(origins="http://localhost:4200")
     public int likeAVideo(@RequestBody int vidId){
         return videoService.likeAVideo(vidId);
+    }
+
+    @PostMapping("/addALike")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public Like addLike(@RequestBody Like like){
+        return videoService.addALike(like);
+    }
+
+    @PutMapping("/unlikeAVideo")
+    @CrossOrigin(origins="http://localhost:4200")
+    public int unlikeAVideo(@RequestBody int vidId){
+        return videoService.unlikeAVideo(vidId);
+    }
+
+    @PutMapping("/removeALike")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public Like removeALike(@RequestBody Like like){
+        return videoService.removeALike(like);
+    }
+
+    @GetMapping("/checkIfVidLikedByUser/{userId}/{vidId}")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public int checkIfVidLikedByUser(@PathVariable int userId, @PathVariable int vidId){
+        return videoService.checkIfVidLikedByUser(userId, vidId);
     }
 
 

@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-    <button mat-icon-button routerLinkActive="ative item" [routerLinkActiveOptions]="{exact : true}" routerLink="/login" class="example-icon" aria-label="Example icon-button with menu icon">
+    <button mat-icon-button routerLinkActive="ative item" [routerLinkActiveOptions]="{exact : true}" routerLink="/homepage" class="example-icon" aria-label="Example icon-button with menu icon">
         <mat-icon>home</mat-icon>
     </button>
     <span>Internal Portal</span>
@@ -14,7 +14,7 @@
             data-setup='{"aspectRatio":"900:540"}'>
     </video>
     <div>
-        <button mat-raised-button color="primary" (click)="like(video.vidId)"><mat-icon class="likes">thumb_up</mat-icon> {{video.likes}}</button>
+        <button mat-raised-button color="primary" (click)="likeVideo(video.vidId)"><mat-icon class="likes">{{like_dislike_icon}}</mat-icon> {{video.likes}}</button>
         <button mat-raised-button color="primary" (click)="restart()">Restart</button>
         <button mat-raised-button color="primary" (click)="skip(-30)"><mat-icon>replay_30</mat-icon></button>
         <button mat-raised-button color="primary" (click)="skip(30)"><mat-icon>forward_30</mat-icon></button>
