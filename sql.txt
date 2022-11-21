@@ -49,3 +49,13 @@ CREATE TABLE COMMENT (
    FOREIGN KEY(commentorId) REFERENCES user1(userId),
    FOREIGN KEY(vidId) REFERENCES video(vidId)
 );
+
+CREATE TABLE LIKE1 (
+   likeId SERIAL,
+   likedOn DATE,
+   userId INT,
+   vidId INT,
+   PRIMARY KEY(likeId),
+   FOREIGN KEY(userId) REFERENCES user1(userId),
+   FOREIGN KEY(vidId) REFERENCES video(vidId)
+);

@@ -30,12 +30,12 @@ export class LoginComponent implements OnInit {
   }
   
   login() {
-    console.log(this.user.userName);
+    console.log(this.user);
     this.loginService.userLoginSpringBoot(this.user).subscribe(
       resp => {
         this.user = resp;
         console.log(resp);
-        console.log("Username: " + this.user.userName);
+        console.log("Username: " + this.user);
         this.loginService.setUser(this.user);
         if(resp!=null)
           this.router.navigate(['/homepage']);

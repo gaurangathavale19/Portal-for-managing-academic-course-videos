@@ -1,5 +1,6 @@
 package com.example.css699.rowmapper;
 
+import com.example.css699.models.Like;
 import com.example.css699.models.User;
 import com.example.css699.models.Video;
 import com.example.css699.models.VideoWithData;
@@ -33,6 +34,13 @@ public class VideoRowMapper {
         video.setStatus(record.getString("status"));
         video.setLikes(record.getInt("likes"));
         return video;
+    };
+
+    public static final RowMapper<Like> lambdaForLike = (record, recordNumber) -> {
+        Like like = new Like();
+        like.setUserId(record.getInt("userId"));
+        like.setVidId(record.getInt("vidId"));
+        return like;
     };
 
 

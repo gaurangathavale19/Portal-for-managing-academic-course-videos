@@ -1,6 +1,7 @@
 package com.example.css699.service.serviceImpl;
 
 import com.example.css699.dao.VideoDao;
+import com.example.css699.models.Like;
 import com.example.css699.models.User;
 import com.example.css699.models.Video;
 import com.example.css699.models.VideoWithData;
@@ -62,5 +63,26 @@ public class videoServiceImpl implements VideoService {
     public int likeAVideo(int vidId) {
         return videoDao.likeAVideo(vidId);
     }
+
+    @Override
+    public Like addALike(Like like) {
+        return videoDao.addALike(like);
+    }
+
+    @Override
+    public int unlikeAVideo(int vidId) {
+        return videoDao.unlikeAVideo(vidId);
+    }
+
+    @Override
+    public Like removeALike(Like like) {
+        return videoDao.removeALike(like);
+    }
+
+    @Override
+    public int checkIfVidLikedByUser(int userId, int vidId) {
+        return videoDao.checkIfVidLikedByUser(userId, vidId);
+    }
+
 
 }

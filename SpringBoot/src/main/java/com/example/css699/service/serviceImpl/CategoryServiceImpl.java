@@ -7,6 +7,8 @@ import com.example.css699.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CategoryServiceImpl implements CategoryService {
 
@@ -16,5 +18,10 @@ public class CategoryServiceImpl implements CategoryService {
 
     public Category addCategory(Category category){
         return categoryDao.addCategory(category);
+    }
+
+    @Override
+    public List<Category> getAllCategories() {
+        return categoryDao.getAllCategories();
     }
 }

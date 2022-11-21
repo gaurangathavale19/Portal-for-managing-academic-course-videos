@@ -2,33 +2,33 @@ package com.example.css699.models;
 
 public class Category {
 
-    private int catid;
+    private int catId;
 
-    private String category;
+    private String categoryName;
 
-    private int vidid;
+    private int vidId;
 
-    public int getCatid() {
-        return catid;
+    public int getCatId() {
+        return catId;
     }
 
-    public void setCatid(int catid) {
-        this.catid = catid;
+    public void setCatId(int catId) {
+        this.catId = catId;
     }
 
-    public String getCategory() {
-        return category;
+    public String getCategoryName() {
+        return categoryName;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
-    public int getVidid() {
-        return vidid;
+    public int getVidId() {
+        return vidId;
     }
 
-    public void setVidid(int vidid) {
-        this.vidid = vidid;
+    public void setVidId(int vidId) {
+        this.vidId = vidId;
     }
 }

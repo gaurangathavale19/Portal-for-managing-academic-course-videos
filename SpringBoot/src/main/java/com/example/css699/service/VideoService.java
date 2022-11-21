@@ -1,5 +1,6 @@
 package com.example.css699.service;
 
+import com.example.css699.models.Like;
 import com.example.css699.models.User;
 import com.example.css699.models.Video;
 import com.example.css699.models.VideoWithData;
@@ -28,4 +29,9 @@ public interface VideoService {
     public User getCreatorNameFromCreatorId(int creatorId);
 
     public int likeAVideo(int vidId);
+    public Like addALike(Like like);
+
+    public int unlikeAVideo(int vidId);
+    public Like removeALike(Like like);
+    public int checkIfVidLikedByUser(int userId, int vidId);
 }

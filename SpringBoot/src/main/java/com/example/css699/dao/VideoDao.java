@@ -1,5 +1,6 @@
 package com.example.css699.dao;
 
+import com.example.css699.models.Like;
 import com.example.css699.models.User;
 import com.example.css699.models.Video;
 import com.example.css699.models.VideoWithData;
@@ -13,7 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -53,7 +53,7 @@ public class VideoDao {
     }
 
     public Video saveVideo(Video video){
-        jdbcTemplate.update(Queries.UPDATE_VIDEO_DATA, video.getVidName(), video.getVidDescription(), video.getVidId());
+        jdbcTemplate.update(Queries.UPDATE_VIDEO_DATA, video.getVidName(), video.getVidDescription(), video.getCreator(), new Date(System.currentTimeMillis()), video.getVidId());
         return video;
     }
 
@@ -85,6 +85,24 @@ public class VideoDao {
 
     public int likeAVideo(int vidId){
         return jdbcTemplate.update(Queries.LIKE_A_VIDEO, vidId);
+    }
+
+    public Like addALike(Like like){
+        jdbcTemplate.update(Queries.ADD_A_LIKE, new Date(System.currentTimeMillis()), like.getUserId(), like.getVidId());
+        return like;
+    }
+
+    public int unlikeAVideo(int vidId){
+        return jdbcTemplate.update(Queries.UNLIKE_A_VIDEO, vidId);
+    }
+
+    public Like removeALike(Like like){
+        jdbcTemplate.update(Queries.REMOVE_A_LIKE, like.getUserId(), like.getVidId());
+        return like;
+    }
+
+    public int checkIfVidLikedByUser(int userId, int vidId){
+        return jdbcTemplate.query(Queries.CHECK_IF_VID_LIKED_BY_USER, VideoRowMapper.lambdaForLike, userId, vidId).size();
     }
 
 }

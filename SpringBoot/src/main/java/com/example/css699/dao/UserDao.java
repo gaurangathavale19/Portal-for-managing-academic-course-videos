@@ -32,7 +32,7 @@ public class UserDao {
         List<User> userFromDatabase = jdbcTemplate.query(Queries.GET_USER_BY_USERNAME, UserRowMapper.lambda, user.getUserName());
         if (userFromDatabase != null && userFromDatabase.size()!=0 && userFromDatabase.get(0).getPassword().equals(user.getPassword())){
             System.out.println("User "+ user.getUserName() +" logged in Successfully");
-            return user;
+            return userFromDatabase.get(0);
         }
         else{
             System.out.println("Invalid Credentials");

@@ -6,6 +6,8 @@ import com.example.css699.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class commentServiceImpl implements CommentService {
 
@@ -14,6 +16,11 @@ public class commentServiceImpl implements CommentService {
 
     public Comment addComment(Comment comment){
         return commentDao.addComment(comment);
+    }
+
+    @Override
+    public List<Comment> getCommentByVidId(int vidId) {
+        return commentDao.getCommentByVidId(vidId);
     }
 
 

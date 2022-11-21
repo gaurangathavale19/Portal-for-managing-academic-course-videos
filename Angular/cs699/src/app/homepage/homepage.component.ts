@@ -14,7 +14,7 @@ import { VideoService } from '../service/video.service';
 export class HomepageComponent implements OnInit {
 
   displayedColumns: String[] = ['SrNo', 'title', 'description', 'category', 'createdBy', 'play']
-
+  // allVideosButton = 'mat-stroked-button'
   dataSource: Video = null;
   video: Video = null;
   user: User = null;
@@ -74,6 +74,10 @@ export class HomepageComponent implements OnInit {
 
   public removeUser(){
     localStorage.removeItem('user');
+  }
+
+  public goToUploadPage(){
+    this.router.navigate(['/uploadVideo']);
   }
 
 }
