@@ -20,10 +20,10 @@ public class Queries {
     public static final String UNLIKE_A_VIDEO = "UPDATE VIDEO SET likes = likes - 1 WHERE vidid = ?";
     public static final String REMOVE_A_LIKE = "DELETE FROM LIKE1 WHERE userId = ? and vidId = ?";
     public static final String CHECK_IF_VID_LIKED_BY_USER = "SELECT * FROM LIKE1 WHERE userId = ? and vidId = ?";
-
     public static final String ADD_COMMENT = "INSERT INTO COMMENT(comment, commentedon, commentorid, vidid) VALUES (?,?,?,?)";
-
     public static final String ADD_CATEGORY = "INSERT INTO CATEGORY(catName, createdon) VALUES (?,?)";
+    public static final String GET_ALL_CATEGORIES = "SELECT * FROM CATEGORY";
+    public static final String GET_COMMENT_BY_VID_ID = "SELECT * FROM COMMENT WHERE vidId = ?";
 
 
 }

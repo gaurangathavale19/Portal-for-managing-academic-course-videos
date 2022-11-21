@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 
-
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatTableModule } from '@angular/material/table';
@@ -23,6 +23,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { PlaySectionComponent } from './play-section/play-section.component';
 import { UploadVideoComponent } from './upload-video/upload-video.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { CommentPopUpComponent } from './comment-pop-up/comment-pop-up.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     RegistrationComponent,
     PlaySectionComponent,
     UploadVideoComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    CommentPopUpComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +52,8 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     ReactiveFormsModule,
     MatInputModule,
     HttpClientModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

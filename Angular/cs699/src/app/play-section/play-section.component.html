@@ -19,4 +19,11 @@
         <button mat-raised-button color="primary" (click)="skip(-30)"><mat-icon>replay_30</mat-icon></button>
         <button mat-raised-button color="primary" (click)="skip(30)"><mat-icon>forward_30</mat-icon></button>
     </div>
+    
+    <button mat-raised-button color="primary" (click)="openDialog(video)">Comment</button>
+    <h3>Comments</h3>
+    <li *ngFor="let comment of comments">
+        {{comment.commentString}}
+    </li>
+        
 </div>

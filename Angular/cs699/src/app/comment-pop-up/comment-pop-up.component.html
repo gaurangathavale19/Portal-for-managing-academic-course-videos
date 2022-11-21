@@ -1,0 +1,14 @@
+<form #loginform="ngForm" class="example-form" (ngSubmit)="submitComment()">
+<h1 mat-dialog-title>Hi {{user.userName}}</h1>
+<div mat-dialog-content>
+  <p>Add your Comment</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Your Comment</mat-label>
+    <input matInput name = "commentString" [(ngModel)] = "comment.commentString">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary">No Thanks</button>
+  <button type="submit" mat-raised-button color="primary" cdkFocusInitial>Submit</button>
+</div>
+</form>

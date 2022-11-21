@@ -1,10 +1,18 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, Inject } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { Comment1 } from 'src/models/Comment1';
 import { Like } from 'src/models/Like';
 import { Video } from 'src/models/Video';
+import { CommentPopUpComponent } from '../comment-pop-up/comment-pop-up.component';
 import { CommonService } from '../service/common.service';
 import { LoginService } from '../service/login.service';
 import { VideoService } from '../service/video.service';
+
+export interface DialogData {
+  animal: string;
+  name: string;
+}
 
 @Component({
   selector: 'app-play-section',
@@ -18,8 +26,11 @@ export class PlaySectionComponent implements OnInit {
   vidId: Number;
   like_dislike_icon = 'thumb_up'
   like: Like = new Like();
+  animal: string;
+  name: string;
+  comments: Comment1[];
 
-  constructor(private commonService: CommonService, private videoService: VideoService, private loginService: LoginService, private router: Router) { }
+  constructor(private commonService: CommonService, private videoService: VideoService, private loginService: LoginService, private router: Router, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     if(localStorage.getItem('user')!=null){
@@ -43,6 +54,11 @@ export class PlaySectionComponent implements OnInit {
         this.videoUrl = "data:video/mp4;base64," + this.video.data;
       }
     )
+
+    this.videoService.getAllCommentsByVidIdSpringBoot(this.vidId).subscribe(
+    resp => {
+        this.comments = resp;
+    })
 
     
   
@@ -133,4 +149,17 @@ export class PlaySectionComponent implements OnInit {
     }
   }
 
+  openDialog(video: Video): void {
+    const dialogRef = this.dialog.open(CommentPopUpComponent, {
+      width: '250px',
+      data: {vidId: video.vidId}
+    });
+    
+    this.commonService.setVideo(video);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
 }

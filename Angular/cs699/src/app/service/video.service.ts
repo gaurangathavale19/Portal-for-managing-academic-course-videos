@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Comment1 } from 'src/models/Comment1';
 import { Like } from 'src/models/Like';
 import { Video } from 'src/models/Video';
 
@@ -60,6 +61,14 @@ export class VideoService {
 
   public checkIfVidLikedByUserSpringBoot(like: Like): Observable<any>{
     return this.http.get(this.BASEURL + '/checkIfVidLikedByUser/' + like.userId + '/' + like.vidId);
+  }
+
+  public addCommentByUserSpringBoot(comment: Comment1): Observable<any>{
+    return this.http.post(this.BASEURL + '/addComment', comment);
+  }
+
+  public getAllCommentsByVidIdSpringBoot(vidId: Number): Observable<any>{
+    return this.http.get(this.BASEURL + '/getCommentByVidId/' + vidId);
   }
 
 }
