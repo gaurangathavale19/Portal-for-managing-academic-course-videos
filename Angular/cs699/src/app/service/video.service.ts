@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Category } from 'src/models/Category';
 import { Comment1 } from 'src/models/Comment1';
 import { Like } from 'src/models/Like';
 import { Video } from 'src/models/Video';
@@ -93,4 +94,19 @@ export class VideoService {
     return this.http.post(this.BASEURL + '/deleteVideo', video);
   }
 
+  public changeVideoStatus(vidId: Number, status: String): Observable<any>{
+    return this.http.post(this.BASEURL + '/changeStatus/' + vidId + '/' + status , vidId);
+  }
+
+  public addCategory(category: Category): Observable<any>{
+    return this.http.post(this.BASEURL + '/addCategory', category);
+  }
+
+  public editCategory(category: Category): Observable<any>{
+    return this.http.post(this.BASEURL + '/editCategory', category);
+  }
+
+  public deleteCategory(category: Category): Observable<any>{
+    return this.http.post(this.BASEURL + '/deleteCategory', category);
+  }
 }

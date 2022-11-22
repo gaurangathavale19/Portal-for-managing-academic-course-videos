@@ -70,7 +70,7 @@ export class HomepageComponent implements OnInit {
 
   public myVideos(){
     this.user = JSON.parse(this.loginSevice.getUser());
-    this.displayedColumns = ['SrNo', 'title', 'description', 'category', 'createdBy', 'play', 'edit', 'delete']
+    this.displayedColumns = ['SrNo', 'title', 'description', 'category', 'status', 'play', 'edit', 'delete']
     console.log(this.user);
     this.videoService.getMyVideosSpringBoot(this.user.userName).subscribe(
       resp => {
@@ -118,6 +118,10 @@ export class HomepageComponent implements OnInit {
 
   public goToManagePage(){
     this.router.navigate(['/manageVideos'])
+  }
+
+  public goToAddCategoryPage(){
+    this.router.navigate(['/manageCategory'])
   }
 
   public openEditDialog(element){

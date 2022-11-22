@@ -5,13 +5,13 @@
     <span>Internal Portal</span>
     <span class="menu-on-right"></span>
     <button mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/login" (click)="goToUploadPage()">Upload</button>
+    <button *ngIf="user.admin==true" mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/login" (click)="goToAddCategoryPage()">Manage Courses</button>
     <button mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/login" (click)="removeUser()">Logout</button>
 </mat-toolbar>
 
 <section class="videos">
-    <button mat-stroked-button color="primary" style="margin-right: 3%;" (click)="allVideos()" >All Videos</button>
-    <button mat-stroked-button color="primary" style="margin-right: 3%;" (click)="myVideos()">My Videos</button>
-    <button mat-stroked-button color="primary" style="margin-right: 3%;" >Subscribed Videos</button>
+    <!-- <button mat-stroked-button color="primary" style="margin-right: 3%;" (click)="allVideos()" >All Videos</button>
+    <button mat-stroked-button color="primary" style="margin-right: 3%;" (click)="myVideos()">My Videos</button> -->
     <button mat-stroked-button color="primary" style="margin-right: 3%;" (click)="pendingVideos()">Pending Videos</button>
 </section>
 
@@ -39,7 +39,7 @@
     </ng-container>
 
     <ng-container matColumnDef="category">
-        <th mat-header-cell *matHeaderCellDef> Category </th>
+        <th mat-header-cell *matHeaderCellDef> Course </th>
         <td mat-cell *matCellDef="let element"> {{element.categoryName}} </td>
       </ng-container>
 

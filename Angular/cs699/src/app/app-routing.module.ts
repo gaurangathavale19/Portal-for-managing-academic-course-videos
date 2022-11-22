@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { LoginComponent } from './login/login.component';
+import { ManageCategoryComponent } from './manage-category/manage-category.component';
 import { ManageVideosComponent } from './manage-videos/manage-videos.component';
 import { PlaySectionComponent } from './play-section/play-section.component';
 import { RegistrationComponent } from './registration/registration.component';
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: 'playSection/:vidId', pathMatch: 'full', component: PlaySectionComponent},
   {path: 'uploadVideo', pathMatch: 'full', component: UploadVideoComponent},
   {path: 'pageNotFound', pathMatch: 'full', component: ErrorPageComponent},
-  {path: 'manageVideos', pathMatch: 'full', component: ManageVideosComponent}
+  {path: 'manageVideos', pathMatch: 'full', component: ManageVideosComponent},
+  {path: 'manageCategory', pathMatch: 'full', component: ManageCategoryComponent}
 ];
 
 @NgModule({

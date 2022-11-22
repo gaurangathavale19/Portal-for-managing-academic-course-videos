@@ -5,6 +5,7 @@ export class Comment1 {
     commentedOn: Date;
     commentorId: Number;
     vidId: Number;
+    commentorName: String;
 
     constructor() { }
   

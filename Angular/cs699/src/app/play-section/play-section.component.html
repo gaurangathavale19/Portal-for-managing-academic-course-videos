@@ -5,7 +5,8 @@
     </button>
     <span>Internal Portal</span>
     <span class="menu-on-right"></span>
-    <button *ngIf="user.admin==true" mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/login" (click)="goToManagePage()">Manage</button>
+    <button *ngIf="user.admin==true" mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/login" (click)="goToManagePage()">Manage Videos</button>
+    <button *ngIf="user.admin==true" mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/login" (click)="goToAddCategoryPage()">Manage Courses</button>
     <button mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/login" (click)="goToUploadPage()">Upload</button>
     <button mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/login" (click)="removeUser()">Logout</button>
 </mat-toolbar>
@@ -23,10 +24,25 @@
         <button class="video-buttons" mat-raised-button color="primary" (click)="skip(30)"><mat-icon>forward_30</mat-icon></button>
     </div>
     
-    <button class="video-buttons" mat-raised-button color="primary" (click)="openDialog(video)">Comment</button>
-    <h3>Comments</h3>
-    <li *ngFor="let comment of comments">
-        {{comment.commentString}}
-    </li>
-        
 </div>
+
+<mat-card class="description">
+    <mat-card-header>
+        <h2>Description: {{video.vidDescription}}</h2>
+    </mat-card-header>
+</mat-card>
+<div style="text-align: center;">
+    <button class="video-buttons" mat-raised-button color="primary" (click)="openDialog(video)">Comment</button>
+</div>
+<br>
+<h2 style="text-align: center;">Comments</h2>
+    <div *ngFor="let comment of comments">
+        <mat-card>
+            <mat-card-header>
+                <h2>{{comment.commentorName}} &nbsp;&nbsp;&nbsp;&nbsp;</h2><h3>{{comment.commentedOn}}</h3>
+            </mat-card-header>
+
+            <mat-card-content><h3>{{comment.commentString}}</h3></mat-card-content>
+        </mat-card>
+        <br>
+    </div>

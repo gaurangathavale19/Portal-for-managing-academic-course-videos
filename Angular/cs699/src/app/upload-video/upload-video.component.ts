@@ -82,6 +82,10 @@ export class UploadVideoComponent implements OnInit {
 
   public goToManagePage(){
     this.router.navigate(['/manageVideos'])
-    }
+  }
+
+  public goToAddCategoryPage(){
+    this.router.navigate(['/manageCategory'])
+  }
 
 }
