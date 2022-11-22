@@ -149,6 +149,7 @@ export class ManageVideosComponent implements OnInit {
     this.videoService.changeVideoStatus(vidId, "APPROVED").subscribe(
       resp => {
         console.log("Video with videoId: " + vidId + " was approved")
+        location.reload();
       }
     )
   }
@@ -157,6 +158,7 @@ export class ManageVideosComponent implements OnInit {
     this.videoService.changeVideoStatus(vidId, "REJECTED").subscribe(
       resp => {
         console.log("Video with videoId: " + vidId + " was rejected")
+        location.reload();
       }
     )
   }
