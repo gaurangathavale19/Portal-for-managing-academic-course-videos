@@ -26,6 +26,7 @@ import { UploadVideoComponent } from './upload-video/upload-video.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { CommentPopUpComponent } from './comment-pop-up/comment-pop-up.component';
 import { ManageVideosComponent } from './manage-videos/manage-videos.component';
+import { EditVideoDetailsComponent } from './edit-video-details/edit-video-details.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { ManageVideosComponent } from './manage-videos/manage-videos.component';
     UploadVideoComponent,
     ErrorPageComponent,
     CommentPopUpComponent,
-    ManageVideosComponent
+    ManageVideosComponent,
+    EditVideoDetailsComponent
   ],
   imports: [
     BrowserModule,

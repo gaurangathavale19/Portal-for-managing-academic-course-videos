@@ -105,4 +105,21 @@ public class VideoDao {
         return jdbcTemplate.query(Queries.CHECK_IF_VID_LIKED_BY_USER, VideoRowMapper.lambdaForLike, userId, vidId).size();
     }
 
+    public int editVideo(Video video){
+        if(video.getVidName() != null && video.getVidDescription() != null)
+            return jdbcTemplate.update(Queries.EDIT_VIDEO_BOTH_FIELDS, video.getVidName(), video.getVidDescription(), video.getVidId());
+        else if(video.getVidName() == null && video.getVidDescription() != null)
+            return jdbcTemplate.update(Queries.EDIT_VIDEO_DESCRIPTION, video.getVidDescription(), video.getVidId());
+        else if(video.getVidName() != null && video.getVidDescription() == null)
+            return jdbcTemplate.update(Queries.EDIT_VIDEO_NAME, video.getVidName(), video.getVidId());
+        else
+            return 0;
+//        return jdbcTemplate.update(Queries.EDIT_VIDEO, video);
+    }
+
+    public Video deleteVideo(Video video){
+        jdbcTemplate.update(Queries.DELETE_VIDEO, video.getVidId());
+        return video;
+    }
+
 }

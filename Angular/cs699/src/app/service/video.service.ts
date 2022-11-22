@@ -23,6 +23,8 @@ export class VideoService {
     return localStorage.getItem('video');
   }
 
+  
+
   public getAllVideosSpringBoot(): Observable<any>{
     return this.http.get(this.BASEURL + '/allVideos');
   }
@@ -82,4 +84,13 @@ export class VideoService {
   public getAllPendingVideosSpringBoot(): Observable<any>{
     return this.http.get(this.BASEURL + '/pending');
   }
+
+  public editVideo(video: Video): Observable<any>{
+    return this.http.post(this.BASEURL + '/editVideo', video);
+  }
+
+  public deleteVideo(video: Video): Observable<any>{
+    return this.http.post(this.BASEURL + '/deleteVideo', video);
+  }
+
 }

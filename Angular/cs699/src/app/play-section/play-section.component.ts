@@ -25,7 +25,7 @@ export class PlaySectionComponent implements OnInit {
   video: Video = new Video();
   videoUrl: String = '';
   vidId: Number;
-  like_dislike_icon = 'thumb_up'
+  like_button_choice = 'material-icons-outlined'
   like: Like = new Like();
   animal: string;
   name: string;
@@ -44,7 +44,7 @@ export class PlaySectionComponent implements OnInit {
       resp => {
         console.log(resp);
         if(resp !== 0){
-          this.like_dislike_icon = 'thumb_down'
+          this.like_button_choice = ''
         }
       }
     )
@@ -108,8 +108,8 @@ export class PlaySectionComponent implements OnInit {
 
   likeVideo(vidId: Number) {
 
-    console.log(this.like_dislike_icon);
-    if(this.like_dislike_icon === 'thumb_up'){
+    console.log(this.like_button_choice);
+    if(this.like_button_choice === 'material-icons-outlined'){
 
       this.videoService.likeAVideoSpringBoot(vidId).subscribe(
         resp => {
@@ -132,7 +132,7 @@ export class PlaySectionComponent implements OnInit {
           console.log(resp);
         }
       )
-      this.like_dislike_icon = 'thumb_down';
+      this.like_button_choice = '';
       this.video.likes = +this.video.likes + 1;
     }
     else {
@@ -148,7 +148,7 @@ export class PlaySectionComponent implements OnInit {
           console.log(resp);
         }
       )
-      this.like_dislike_icon = 'thumb_up';
+      this.like_button_choice = 'material-icons-outlined';
       this.video.likes = +this.video.likes - 1;
     }
   }

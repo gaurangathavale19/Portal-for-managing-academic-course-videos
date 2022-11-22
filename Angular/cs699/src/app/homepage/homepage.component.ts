@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { User } from 'src/models/User';
 import { Video } from 'src/models/Video';
+import { EditVideoDetailsComponent } from '../edit-video-details/edit-video-details.component';
 import { CommonService } from '../service/common.service';
 import { LoginService } from '../service/login.service';
 import { VideoService } from '../service/video.service';
@@ -18,8 +20,11 @@ export class HomepageComponent implements OnInit {
   dataSource: Video = null;
   video: Video = null;
   user: User = null;
+  vidName: String;
+  vidDescription: String;
+  vidId: Number;
 
-  constructor(private videoService: VideoService, private loginSevice: LoginService, private commonService: CommonService, private router: Router) { }
+  constructor(private videoService: VideoService, private loginSevice: LoginService, private commonService: CommonService, private router: Router, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.user = JSON.parse(this.loginSevice.getUser());
@@ -65,7 +70,7 @@ export class HomepageComponent implements OnInit {
 
   public myVideos(){
     this.user = JSON.parse(this.loginSevice.getUser());
-    this.displayedColumns = ['SrNo', 'title', 'description', 'category', 'play']
+    this.displayedColumns = ['SrNo', 'title', 'description', 'category', 'createdBy', 'play', 'edit', 'delete']
     console.log(this.user);
     this.videoService.getMyVideosSpringBoot(this.user.userName).subscribe(
       resp => {
@@ -75,11 +80,14 @@ export class HomepageComponent implements OnInit {
           console.log(resp[j].categoryId);
           this.videoService.getCategoryNameFromCategoryIdSpringBoot(resp[j].categoryId).subscribe(
             resp2 => {
+              console.log(resp2)
               resp[j].categoryName = resp2.categoryName;
               resp[j].vidShortDescription = resp[j].vidDescription;
+              resp[j].creatorName = this.user.userName;
               if(resp[j].vidDescription.length > 20){
                 resp[j].vidShortDescription = resp[j].vidDescription.slice(0,20)+'......'
               }
+              console.log(resp);
               this.dataSource = resp;
             }
           )
@@ -110,6 +118,29 @@ export class HomepageComponent implements OnInit {
 
   public goToManagePage(){
     this.router.navigate(['/manageVideos'])
+  }
+
+  public openEditDialog(element){
+    const dialogRef = this.dialog.open(EditVideoDetailsComponent, {
+      width: '250px',
+      data: {vidName: this.vidName, vidDescription: this.vidDescription, vidId: this.vidId}
+    })
+
+    this.commonService.setVideoToBeEdited(element);
+
+    dialogRef.afterClosed().subscribe(resp => {
+      this.vidName = resp;
+    });
+
+  }
+
+  public deleteVideo(video){
+    this.videoService.deleteVideo(video).subscribe(
+      resp => {
+        console.log("deleted successfully");
+        location.reload();
+      }
+    )
   }
 
 }
