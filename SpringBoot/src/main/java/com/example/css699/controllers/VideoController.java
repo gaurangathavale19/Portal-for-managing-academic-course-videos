@@ -24,6 +24,13 @@ public class VideoController {
         return videoService.saveVideoToFolder(videoFile);
     }
 
+
+    @PostMapping("/changeStatus/{vidID}/{status}")
+    @CrossOrigin(origins ="http://localhost:4200")
+    public int setStatus(@PathVariable int vidID, @PathVariable String status){
+        return videoService.changeStatus(vidID, status);
+    }
+
     @PostMapping("/saveVideo")
     @CrossOrigin(origins="http://localhost:4200")
     public Video saveVideo(@RequestBody Video video){

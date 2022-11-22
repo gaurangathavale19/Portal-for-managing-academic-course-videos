@@ -69,6 +69,12 @@ public class VideoDao {
         return jdbcTemplate.query(Queries.GET_MY_VIDEOS, VideoRowMapper.lambda , userName);
     }
 
+
+    public int changeStatus(int vidID, String status){
+        return jdbcTemplate.update(Queries.SET_STATUS, status, vidID);
+
+    }
+
     public VideoWithData getVideoByVideoId(int vidId) throws IOException {
         VideoWithData videoWithData = jdbcTemplate.queryForObject(Queries.GET_VIDEO_BY_VIDEO_ID, VideoRowMapper.lambdaWithData, vidId);
         File videoFile = new File(videoWithData.getVidPath());

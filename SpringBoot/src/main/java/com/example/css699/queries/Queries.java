@@ -31,5 +31,7 @@ public class Queries {
     public static final String EDIT_VIDEO_NAME = "UPDATE VIDEO SET vidName = ? where vidId = ?";
     public static final String DELETE_VIDEO = "DELETE FROM VIDEO WHERE vidId = ?";
 
+    public static final String SET_STATUS = "UPDATE VIDEO SET status = ? WHERE vidID = ? ";
+
 
 }
