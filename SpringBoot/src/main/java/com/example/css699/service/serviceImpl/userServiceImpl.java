@@ -20,4 +20,9 @@ public class userServiceImpl implements UserService {
     public User signIn(User user) {
         return userDao.signIn(user);
     }
+
+    @Override
+    public boolean isAdmin(int userId) {
+        return userDao.isAdmin(userId);
+    }
 }

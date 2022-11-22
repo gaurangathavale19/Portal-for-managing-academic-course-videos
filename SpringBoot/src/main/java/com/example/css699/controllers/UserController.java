@@ -3,10 +3,7 @@ package com.example.css699.controllers;
 import com.example.css699.models.User;
 import com.example.css699.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController {
@@ -26,5 +23,12 @@ public class UserController {
         System.out.println(user.getUserName());
         return userService.signIn(user);
     }
+
+    @GetMapping("/isAdmin")
+    @CrossOrigin(origins="http://localhost:4200")
+    public boolean isAdmin(int userId){
+        return userService.isAdmin(userId);
+    }
+
 
 }

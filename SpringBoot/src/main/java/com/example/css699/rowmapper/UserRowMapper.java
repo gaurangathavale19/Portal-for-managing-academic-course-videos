@@ -16,6 +16,7 @@ public class UserRowMapper {
         user.setName(record.getString("name"));
         user.setEmailId(record.getString("email"));
         user.setPassword(record.getString("password"));
+        user.setAdmin(record.getBoolean("isAdmin"));
         return user;
     };
 

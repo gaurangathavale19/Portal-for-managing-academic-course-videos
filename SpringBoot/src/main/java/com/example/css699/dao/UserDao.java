@@ -39,4 +39,9 @@ public class UserDao {
             return null;
         }
     }
+
+    public boolean isAdmin(int userId){
+        User user = jdbcTemplate.queryForObject(Queries.CHECK_IF_USER_IS_ADMIN, UserRowMapper.lambda, userId);
+        return user.isAdmin();
+    }
 }

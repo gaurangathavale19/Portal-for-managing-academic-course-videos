@@ -71,4 +71,15 @@ export class VideoService {
     return this.http.get(this.BASEURL + '/getCommentByVidId/' + vidId);
   }
 
+  public getAllCategoriesSpringBoot(): Observable<any>{
+    return this.http.get(this.BASEURL + '/getAllCategories/');
+  }
+
+  public getCategoryNameFromCategoryIdSpringBoot(categoryId: Number): Observable<any>{
+    return this.http.get(this.BASEURL + '/getCategoryNameFromCategoryId/' + categoryId);
+  }
+
+  public getAllPendingVideosSpringBoot(): Observable<any>{
+    return this.http.get(this.BASEURL + '/pending');
+  }
 }

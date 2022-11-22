@@ -3,6 +3,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { Router } from '@angular/router';
 import { Comment1 } from 'src/models/Comment1';
 import { Like } from 'src/models/Like';
+import { User } from 'src/models/User';
 import { Video } from 'src/models/Video';
 import { CommentPopUpComponent } from '../comment-pop-up/comment-pop-up.component';
 import { CommonService } from '../service/common.service';
@@ -29,10 +30,13 @@ export class PlaySectionComponent implements OnInit {
   animal: string;
   name: string;
   comments: Comment1[];
+  user: User;
 
   constructor(private commonService: CommonService, private videoService: VideoService, private loginService: LoginService, private router: Router, public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.user = JSON.parse(this.loginService.getUser());
+
     if(localStorage.getItem('user')!=null){
     this.like.userId = JSON.parse(localStorage.getItem('user')).userId;
     this.like.vidId = parseInt(localStorage.getItem('video'));
@@ -162,4 +166,17 @@ export class PlaySectionComponent implements OnInit {
       this.animal = result;
     });
   }
+
+  public removeUser(){
+    localStorage.removeItem('user');
+  }
+
+  public goToUploadPage(){
+    this.router.navigate(['/uploadVideo']);
+  }
+
+  public goToManagePage(){
+  this.router.navigate(['/manageVideos'])
+  }
+
 }
