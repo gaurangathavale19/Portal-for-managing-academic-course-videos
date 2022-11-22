@@ -21,6 +21,7 @@ public class VideoRowMapper {
         video.setVidId(record.getInt("vidId"));
         video.setUploadedOn(record.getDate("uploadedOn"));
         video.setStatus(record.getString("status"));
+        video.setCategoryId(record.getInt("catId"));
         return video;
     };
     public static final RowMapper<VideoWithData> lambdaWithData = (record, recordNumber) -> {

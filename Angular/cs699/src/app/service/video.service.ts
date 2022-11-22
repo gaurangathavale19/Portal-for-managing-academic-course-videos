@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Category } from 'src/models/Category';
+import { Comment1 } from 'src/models/Comment1';
 import { Like } from 'src/models/Like';
 import { Video } from 'src/models/Video';
 
@@ -21,6 +23,8 @@ export class VideoService {
   public getVideo(){
     return localStorage.getItem('video');
   }
+
+  
 
   public getAllVideosSpringBoot(): Observable<any>{
     return this.http.get(this.BASEURL + '/allVideos');
@@ -62,4 +66,47 @@ export class VideoService {
     return this.http.get(this.BASEURL + '/checkIfVidLikedByUser/' + like.userId + '/' + like.vidId);
   }
 
+  public addCommentByUserSpringBoot(comment: Comment1): Observable<any>{
+    return this.http.post(this.BASEURL + '/addComment', comment);
+  }
+
+  public getAllCommentsByVidIdSpringBoot(vidId: Number): Observable<any>{
+    return this.http.get(this.BASEURL + '/getCommentByVidId/' + vidId);
+  }
+
+  public getAllCategoriesSpringBoot(): Observable<any>{
+    return this.http.get(this.BASEURL + '/getAllCategories/');
+  }
+
+  public getCategoryNameFromCategoryIdSpringBoot(categoryId: Number): Observable<any>{
+    return this.http.get(this.BASEURL + '/getCategoryNameFromCategoryId/' + categoryId);
+  }
+
+  public getAllPendingVideosSpringBoot(): Observable<any>{
+    return this.http.get(this.BASEURL + '/pending');
+  }
+
+  public editVideo(video: Video): Observable<any>{
+    return this.http.post(this.BASEURL + '/editVideo', video);
+  }
+
+  public deleteVideo(video: Video): Observable<any>{
+    return this.http.post(this.BASEURL + '/deleteVideo', video);
+  }
+
+  public changeVideoStatus(vidId: Number, status: String): Observable<any>{
+    return this.http.post(this.BASEURL + '/changeStatus/' + vidId + '/' + status , vidId);
+  }
+
+  public addCategory(category: Category): Observable<any>{
+    return this.http.post(this.BASEURL + '/addCategory', category);
+  }
+
+  public editCategory(category: Category): Observable<any>{
+    return this.http.post(this.BASEURL + '/editCategory', category);
+  }
+
+  public deleteCategory(category: Category): Observable<any>{
+    return this.http.post(this.BASEURL + '/deleteCategory', category);
+  }
 }

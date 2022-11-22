@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from 'src/models/User';
 import { LoginService } from '../service/login.service';
 
@@ -10,7 +11,7 @@ import { LoginService } from '../service/login.service';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -41,6 +42,7 @@ export class RegistrationComponent implements OnInit {
         this.user = resp;
         this.message = "User registered successfully!!";
         console.log(this.message);
+        this.router.navigate(['/login'])
       }
     )
   }

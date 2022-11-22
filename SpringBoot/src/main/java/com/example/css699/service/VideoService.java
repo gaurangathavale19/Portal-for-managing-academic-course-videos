@@ -16,6 +16,8 @@ public interface VideoService {
 
     public Video saveVideoToFolder(MultipartFile videoFile) throws IOException;
 
+    public int changeStatus(int vidID, String status);
+
     public Video saveVideo(Video video);
 
     public List<Video> getAllVideos();
@@ -34,4 +36,6 @@ public interface VideoService {
     public int unlikeAVideo(int vidId);
     public Like removeALike(Like like);
     public int checkIfVidLikedByUser(int userId, int vidId);
+    public int editVideo(Video video);
+    public Video deleteVideo(Video video);
 }

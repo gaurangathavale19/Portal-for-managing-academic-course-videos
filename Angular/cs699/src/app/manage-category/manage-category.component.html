@@ -1,0 +1,52 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button routerLinkActive="ative item" [routerLinkActiveOptions]="{exact : true}" routerLink="/homepage" class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>home</mat-icon>
+    </button>
+    <span>Internal Portal</span>
+    <span class="menu-on-right"></span>
+
+    <button mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/login" (click)="goToUploadPage()">Upload</button>
+    <button *ngIf="user.admin==true" mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/login" (click)="goToManagePage()">Manage Videos</button>
+    <button mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/login" (click)="removeUser()">Logout</button>
+</mat-toolbar>
+
+
+<section class="videos">
+    <button mat-stroked-button color="primary" style="margin-right: 3%;" >Manage Courses</button>
+</section>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" align="center">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="SrNo">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element; let index = index;"> {{index+1}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Course </th>
+      <td mat-cell *matCellDef="let element"> {{element.categoryName}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef> Edit </th>
+      <td mat-cell *matCellDef="let element"> <button mat-raised-button color="accent" (click)="openEditDialog(element)"><mat-icon>edit</mat-icon> Edit</button> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef> Delete </th>
+      <td mat-cell *matCellDef="let element"> <button mat-raised-button color="warn" (click)="deleteCategory(element)"><mat-icon>delete</mat-icon> Delete</button> </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+<br><br>
+<div class="container" style="text-align: center;">
+    <button type="submit" mat-raised-button color="primary" (click)="openAddDialog()">ADD COURSE</button>
+</div>

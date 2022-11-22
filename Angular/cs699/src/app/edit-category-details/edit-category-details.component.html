@@ -1,0 +1,16 @@
+<form #loginform="ngForm" class="example-form">
+    <h1 mat-dialog-title>Hi {{user.userName}}</h1>
+    <div mat-dialog-content>
+      <p>Make your edits</p>
+      <mat-form-field appearance="fill" class="example-full-width">
+        <mat-label>Course Name</mat-label>
+        <input matInput name = "editedName" [(ngModel)] = "category.categoryName">
+      </mat-form-field>
+      <br>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-raised-button color="primary">No Thanks</button>
+      <button type="submit" mat-raised-button color="primary" (click)="editCategoryDetails()" cdkFocusInitial>Submit</button>
+    </div>
+    </form>
+    

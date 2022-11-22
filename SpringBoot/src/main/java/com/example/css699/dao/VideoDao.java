@@ -53,7 +53,7 @@ public class VideoDao {
     }
 
     public Video saveVideo(Video video){
-        jdbcTemplate.update(Queries.UPDATE_VIDEO_DATA, video.getVidName(), video.getVidDescription(), video.getCreator(), new Date(System.currentTimeMillis()), video.getVidId());
+        jdbcTemplate.update(Queries.UPDATE_VIDEO_DATA, video.getVidName(), video.getVidDescription(), video.getCreator(), video.getCategoryId(), new Date(System.currentTimeMillis()), video.getVidId());
         return video;
     }
 
@@ -67,6 +67,12 @@ public class VideoDao {
 
     public List<Video> getMyVideos(String userName){
         return jdbcTemplate.query(Queries.GET_MY_VIDEOS, VideoRowMapper.lambda , userName);
+    }
+
+
+    public int changeStatus(int vidID, String status){
+        return jdbcTemplate.update(Queries.SET_STATUS, status, vidID);
+
     }
 
     public VideoWithData getVideoByVideoId(int vidId) throws IOException {
@@ -103,6 +109,22 @@ public class VideoDao {
 
     public int checkIfVidLikedByUser(int userId, int vidId){
         return jdbcTemplate.query(Queries.CHECK_IF_VID_LIKED_BY_USER, VideoRowMapper.lambdaForLike, userId, vidId).size();
+    }
+
+    public int editVideo(Video video){
+        if(video.getVidName() != null && video.getVidDescription() != null)
+            return jdbcTemplate.update(Queries.EDIT_VIDEO_BOTH_FIELDS, video.getVidName(), video.getVidDescription(), video.getVidId());
+        else if(video.getVidName() == null && video.getVidDescription() != null)
+            return jdbcTemplate.update(Queries.EDIT_VIDEO_DESCRIPTION, video.getVidDescription(), video.getVidId());
+        else if(video.getVidName() != null && video.getVidDescription() == null)
+            return jdbcTemplate.update(Queries.EDIT_VIDEO_NAME, video.getVidName(), video.getVidId());
+        else
+            return 0;
+    }
+
+    public Video deleteVideo(Video video){
+        jdbcTemplate.update(Queries.DELETE_VIDEO, video.getVidId());
+        return video;
     }
 
 }

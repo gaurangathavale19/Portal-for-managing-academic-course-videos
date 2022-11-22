@@ -4,53 +4,53 @@ import java.util.Date;
 
 public class Comment {
 
-    private int commentid;
+    private int commentId;
 
-    private String comment;
+    private String commentString;
 
-    private Date commentedon;
+    private Date commentedOn;
 
-    private int commentorid;
+    private int commentorId;
 
-    private int vidid;
+    private int vidId;
 
-    public int getCommentid() {
-        return commentid;
+    public int getCommentId() {
+        return commentId;
     }
 
-    public void setCommentid(int commentid) {
-        this.commentid = commentid;
+    public void setCommentId(int commentId) {
+        this.commentId = commentId;
     }
 
-    public String getComment() {
-        return comment;
+    public String getCommentString() {
+        return commentString;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setCommentString(String commentString) {
+        this.commentString = commentString;
     }
 
-    public Date getCommentedon() {
-        return commentedon;
+    public Date getCommentedOn() {
+        return commentedOn;
     }
 
-    public void setCommentedon(Date commentedon) {
-        this.commentedon = commentedon;
+    public void setCommentedOn(Date commentedOn) {
+        this.commentedOn = commentedOn;
     }
 
-    public int getCommentorid() {
-        return commentorid;
+    public int getCommentorId() {
+        return commentorId;
     }
 
-    public void setCommentorid(int commentorid) {
-        this.commentorid = commentorid;
+    public void setCommentorId(int commentorId) {
+        this.commentorId = commentorId;
     }
 
-    public int getVidid() {
-        return vidid;
+    public int getVidId() {
+        return vidId;
     }
 
-    public void setVidid(int vidid) {
-        this.vidid = vidid;
+    public void setVidId(int vidId) {
+        this.vidId = vidId;
     }
 }

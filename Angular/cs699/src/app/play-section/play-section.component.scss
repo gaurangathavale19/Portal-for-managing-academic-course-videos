@@ -7,10 +7,24 @@
     padding-top: 3%;
 }
 
-button{
+.video-buttons{
     margin: 1%;
 }
 
 .likes{
     font-size: large;
+}
+
+mat-card{
+    padding: 1%;
+    margin: 1%;
+    background-color: lightgrey;
+}
+
+mat-card-content{
+    padding-left: 1.8%;
+}
+
+.descriptionContent{
+    padding-left: 1.8%;
 }
