@@ -31,6 +31,7 @@ export class PlaySectionComponent implements OnInit {
   name: string;
   comments: Comment1[];
   user: User;
+  categoryName: String;
 
   constructor(private commonService: CommonService, private videoService: VideoService, private loginService: LoginService, private router: Router, public dialog: MatDialog) { }
 
@@ -59,9 +60,19 @@ export class PlaySectionComponent implements OnInit {
       }
     )
 
+
+   
+
     this.videoService.getAllCommentsByVidIdSpringBoot(this.vidId).subscribe(
     resp => {
         this.comments = resp;
+        for (let i = 0; i<this.comments.length; i++){
+          this.videoService.getCreatorNameFromCreatorIdSpringBoot(this.comments[i].commentorId).subscribe(
+            resp1 => {
+              this.comments[i].commentorName = resp1.userName;
+            }
+          )
+        }
     })
 
     
