@@ -33,7 +33,6 @@ export class CommentPopUpComponent implements OnInit {
         console.log(resp);
       }
     )
-    
   }
 
 }

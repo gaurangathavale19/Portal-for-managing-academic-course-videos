@@ -22,6 +22,8 @@ export class HomepageComponent implements OnInit {
   constructor(private videoService: VideoService, private loginSevice: LoginService, private commonService: CommonService, private router: Router) { }
 
   ngOnInit(): void {
+    this.user = JSON.parse(this.loginSevice.getUser());
+    console.log(this.user.admin);
     this.videoService.getAllVideosSpringBoot().subscribe(
       resp => {
         this.video = resp;
@@ -33,10 +35,23 @@ export class HomepageComponent implements OnInit {
             resp1 => {
               this.video[i].creatorName = resp1.userName;
               console.log(this.video);
-              this.dataSource = this.video;
+              // this.dataSource = this.video;
             }
           )
-          
+        }
+        for (let j = 0; j < resp.length; j++){
+          console.log(this.video[j].categoryId);
+          this.videoService.getCategoryNameFromCategoryIdSpringBoot(this.video[j].categoryId).subscribe(
+            resp2 => {
+              this.video[j].categoryName = resp2.categoryName;
+              this.video[j].vidShortDescription = this.video[j].vidDescription;
+              if(this.video[j].vidDescription.length > 20){
+                this.video[j].vidShortDescription = this.video[j].vidDescription.slice(0,20)+'...'
+              }
+              this.dataSource = this.video
+              console.log(this.dataSource);
+            }
+          )
         }
       }
     )
@@ -56,6 +71,19 @@ export class HomepageComponent implements OnInit {
       resp => {
         this.dataSource = resp;
         console.log(this.dataSource);
+        for (let j = 0; j < resp.length; j++){
+          console.log(resp[j].categoryId);
+          this.videoService.getCategoryNameFromCategoryIdSpringBoot(resp[j].categoryId).subscribe(
+            resp2 => {
+              resp[j].categoryName = resp2.categoryName;
+              resp[j].vidShortDescription = resp[j].vidDescription;
+              if(resp[j].vidDescription.length > 20){
+                resp[j].vidShortDescription = resp[j].vidDescription.slice(0,20)+'......'
+              }
+              this.dataSource = resp;
+            }
+          )
+        }
       }
     );
   }
@@ -78,6 +106,10 @@ export class HomepageComponent implements OnInit {
 
   public goToUploadPage(){
     this.router.navigate(['/uploadVideo']);
+  }
+
+  public goToManagePage(){
+    this.router.navigate(['/manageVideos'])
   }
 
 }

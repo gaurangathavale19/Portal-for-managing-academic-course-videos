@@ -27,4 +27,10 @@ public class CategoryController {
         return categoryService.getAllCategories();
     }
 
+    @GetMapping("/getCategoryNameFromCategoryId/{categoryId}")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public Category getCategoryNameFromCategoryId(@PathVariable int categoryId){
+        return categoryService.getCategoryNameFromCategoryId(categoryId);
+    }
+
 }

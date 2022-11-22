@@ -6,6 +6,7 @@ export class User {
     name?: String;
     userName?: String;
     createdOn?:Date;
+    admin: Boolean;
 
     constructor() { }
   

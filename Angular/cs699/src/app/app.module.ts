@@ -15,6 +15,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
@@ -24,6 +25,7 @@ import { PlaySectionComponent } from './play-section/play-section.component';
 import { UploadVideoComponent } from './upload-video/upload-video.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { CommentPopUpComponent } from './comment-pop-up/comment-pop-up.component';
+import { ManageVideosComponent } from './manage-videos/manage-videos.component';
 
 
 @NgModule({
@@ -35,7 +37,8 @@ import { CommentPopUpComponent } from './comment-pop-up/comment-pop-up.component
     PlaySectionComponent,
     UploadVideoComponent,
     ErrorPageComponent,
-    CommentPopUpComponent
+    CommentPopUpComponent,
+    ManageVideosComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,8 @@ import { CommentPopUpComponent } from './comment-pop-up/comment-pop-up.component
     MatInputModule,
     HttpClientModule,
     MatCardModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
