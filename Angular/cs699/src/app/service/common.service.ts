@@ -18,4 +18,13 @@ export class CommonService {
     return this.video;
   }
 
+  public setVideoToBeEdited(video: Video){
+    this.video = video;
+  }
+
+  public getVideoToBeEdited(){
+    return this.video;
+  }
+
+
 }

@@ -87,6 +87,16 @@ public class videoServiceImpl implements VideoService {
     @Override
     public int changeStatus(int vidID, String status) {
         return videoDao.changeStatus(vidID, status);
+    } 
+    
+    @Override
+    public int editVideo(Video video) {
+        return videoDao.editVideo(video);
+    }
+
+    @Override
+    public Video deleteVideo(Video video) {
+        return videoDao.deleteVideo(video);
     }
 
 }

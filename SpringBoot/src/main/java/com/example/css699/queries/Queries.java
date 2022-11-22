@@ -26,6 +26,10 @@ public class Queries {
     public static final String GET_COMMENT_BY_VID_ID = "SELECT * FROM COMMENT WHERE vidId = ?";
     public static final String GET_CATEGORY_NAME_FROM_CATEGORY_ID = "SELECT * FROM CATEGORY WHERE catId = ?";
     public static final String CHECK_IF_USER_IS_ADMIN = "SELECT * FROM USER1 WHERE userId = ?";
+    public static final String EDIT_VIDEO_BOTH_FIELDS = "UPDATE VIDEO SET vidName = ?, vidDescription = ? where vidId = ?";
+    public static final String EDIT_VIDEO_DESCRIPTION = "UPDATE VIDEO SET vidDescription = ? where vidId = ?";
+    public static final String EDIT_VIDEO_NAME = "UPDATE VIDEO SET vidName = ? where vidId = ?";
+    public static final String DELETE_VIDEO = "DELETE FROM VIDEO WHERE vidId = ?";
 
     public static final String SET_STATUS = "UPDATE VIDEO SET status = ? WHERE vidID = ? ";
 

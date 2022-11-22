@@ -98,5 +98,17 @@ public class VideoController {
         return videoService.checkIfVidLikedByUser(userId, vidId);
     }
 
+    @PostMapping("/editVideo")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public int editVideo(@RequestBody Video video){
+        return videoService.editVideo(video);
+    }
+
+    @PostMapping("/deleteVideo")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public Video deleteVideo(@RequestBody Video video){
+        return videoService.deleteVideo(video);
+    }
+
 
 }
