@@ -120,7 +120,6 @@ public class VideoDao {
             return jdbcTemplate.update(Queries.EDIT_VIDEO_NAME, video.getVidName(), video.getVidId());
         else
             return 0;
-//        return jdbcTemplate.update(Queries.EDIT_VIDEO, video);
     }
 
     public Video deleteVideo(Video video){

@@ -12,4 +12,8 @@ public interface CategoryService {
 
     public Category getCategoryNameFromCategoryId(int categoryId);
 
+    public int editCategory(Category category);
+
+    public int deleteCategory(Category category);
+
 }

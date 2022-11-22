@@ -27,7 +27,7 @@ export class PlaySectionComponent implements OnInit {
   vidId: Number;
   like_button_choice = 'material-icons-outlined'
   like: Like = new Like();
-  animal: string;
+  commentString: string;
   name: string;
   comments: Comment1[];
   user: User;
@@ -163,7 +163,7 @@ export class PlaySectionComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.animal = result;
+      this.commentString = result;
     });
   }
 
@@ -177,6 +177,10 @@ export class PlaySectionComponent implements OnInit {
 
   public goToManagePage(){
   this.router.navigate(['/manageVideos'])
+  }
+
+  public goToAddCategoryPage(){
+    this.router.navigate(['/manageCategory'])
   }
 
 }

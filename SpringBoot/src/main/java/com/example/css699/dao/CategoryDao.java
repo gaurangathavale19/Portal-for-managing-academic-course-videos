@@ -23,7 +23,6 @@ public class CategoryDao {
         jdbcTemplate.update(Queries.ADD_CATEGORY, category.getCategoryName(), new Date(System.currentTimeMillis()));
         System.out.println("Category Added");
         return category;
-
     }
 
     public List<Category> getAllCategories(){
@@ -35,5 +34,16 @@ public class CategoryDao {
     public Category getCategoryNameFromCategoryId(int categoryId){
         Category category = jdbcTemplate.query(Queries.GET_CATEGORY_NAME_FROM_CATEGORY_ID, CategoryRowMapper.lambda, categoryId).get(0);
         return category;
+    }
+
+    public int editCategory(Category category){
+        if(category.getCategoryName() != null)
+            return jdbcTemplate.update(Queries.EDIT_CATEGORY, category.getCategoryName(),category.getCatId());
+        return 0;
+    }
+
+    public int deleteCategory(Category category){
+        jdbcTemplate.update(Queries.DELETE_VIDEOS_FROM_CATEGORY, category.getCatId());
+        return jdbcTemplate.update(Queries.DELETE_CATEGORY, category.getCatId());
     }
 }

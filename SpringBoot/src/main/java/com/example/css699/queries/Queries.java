@@ -30,8 +30,10 @@ public class Queries {
     public static final String EDIT_VIDEO_DESCRIPTION = "UPDATE VIDEO SET vidDescription = ? where vidId = ?";
     public static final String EDIT_VIDEO_NAME = "UPDATE VIDEO SET vidName = ? where vidId = ?";
     public static final String DELETE_VIDEO = "DELETE FROM VIDEO WHERE vidId = ?";
-
     public static final String SET_STATUS = "UPDATE VIDEO SET status = ? WHERE vidID = ? ";
+    public static final String EDIT_CATEGORY = "UPDATE CATEGORY SET catName = ? where catId = ?";
+    public static final String DELETE_CATEGORY = "DELETE FROM CATEGORY WHERE catId = ?";
+    public static final String DELETE_VIDEOS_FROM_CATEGORY = "DELETE FROM VIDEO WHERE catId = ?";
 
 
 }

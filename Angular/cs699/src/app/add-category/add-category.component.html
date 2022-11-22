@@ -1,0 +1,12 @@
+<div class="container" style="text-align: center;">
+    <h1>ADD COURSE</h1>
+  <form #loginform="ngForm" class="example-form">
+      <br>
+        <mat-form-field appearance="outline">
+          <mat-label>Course Name</mat-label>
+          <input matInput placeholder="Enter the category name" name="catName" [(ngModel)] = "category.categoryName" required>
+        </mat-form-field>
+      <br><br>
+      <button type="submit" mat-raised-button color="primary" (click)="addCategory()">ADD COURSE</button>
+  </form>
+  </div>

@@ -17,8 +17,10 @@ public class CommentDao {
     public JdbcTemplate jdbcTemplate;
 
     public Comment addComment(Comment comment){
-        jdbcTemplate.update(Queries.ADD_COMMENT, comment.getCommentString(), new Date(System.currentTimeMillis()), comment.getCommentorId(), comment.getVidId());
-        System.out.println("Comment Added Sucessfully");
+        if(comment.getCommentString() != null) {
+            jdbcTemplate.update(Queries.ADD_COMMENT, comment.getCommentString(), new Date(System.currentTimeMillis()), comment.getCommentorId(), comment.getVidId());
+            System.out.println("Comment Added Sucessfully");
+        }
         return comment;
     }
 

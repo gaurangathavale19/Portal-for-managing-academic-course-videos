@@ -21,6 +21,7 @@ export class ManageVideosComponent implements OnInit {
   constructor(private videoService: VideoService, private loginService: LoginService, private commonService: CommonService, private router: Router, private loginSevice: LoginService) { }
 
   ngOnInit(): void {
+    this.user = JSON.parse(this.loginService.getUser());
     this.videoService.getAllPendingVideosSpringBoot().subscribe(
       resp => {
         this.video = resp;
@@ -138,6 +139,26 @@ export class ManageVideosComponent implements OnInit {
 
   public goToUploadPage(){
     this.router.navigate(['/uploadVideo']);
+  }
+
+  public goToAddCategoryPage(){
+    this.router.navigate(['/manageCategory'])
+  }
+
+  public onApprove(vidId: Number){
+    this.videoService.changeVideoStatus(vidId, "APPROVED").subscribe(
+      resp => {
+        console.log("Video with videoId: " + vidId + " was approved")
+      }
+    )
+  }
+
+  public onReject(vidId : Number){
+    this.videoService.changeVideoStatus(vidId, "REJECTED").subscribe(
+      resp => {
+        console.log("Video with videoId: " + vidId + " was rejected")
+      }
+    )
   }
 
 

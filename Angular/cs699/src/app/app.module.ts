@@ -27,6 +27,9 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { CommentPopUpComponent } from './comment-pop-up/comment-pop-up.component';
 import { ManageVideosComponent } from './manage-videos/manage-videos.component';
 import { EditVideoDetailsComponent } from './edit-video-details/edit-video-details.component';
+import { ManageCategoryComponent } from './manage-category/manage-category.component';
+import { EditCategoryDetailsComponent } from './edit-category-details/edit-category-details.component';
+import { AddCategoryComponent } from './add-category/add-category.component';
 
 
 @NgModule({
@@ -40,7 +43,10 @@ import { EditVideoDetailsComponent } from './edit-video-details/edit-video-detai
     ErrorPageComponent,
     CommentPopUpComponent,
     ManageVideosComponent,
-    EditVideoDetailsComponent
+    EditVideoDetailsComponent,
+    ManageCategoryComponent,
+    EditCategoryDetailsComponent,
+    AddCategoryComponent
   ],
   imports: [
     BrowserModule,
