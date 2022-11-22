@@ -11,6 +11,7 @@ public class Video {
     private String status;
     private int creatorId;
     private int likes;
+    private int categoryId;
     public int getVidId() {
         return vidId;
     }
@@ -73,5 +74,13 @@ public class Video {
 
     public void setLikes(int likes) {
         this.likes = likes;
+    }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 }

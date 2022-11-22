@@ -1,7 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Category } from 'src/models/Category';
+import { User } from 'src/models/User';
 import { Video } from 'src/models/Video';
+import { LoginService } from '../service/login.service';
 import { VideoService } from '../service/video.service';
 
 @Component({
@@ -15,10 +18,23 @@ export class UploadVideoComponent implements OnInit {
   videoStatus = '';
   fileChosenName = 'No file chosen';
   uploadedFile: File;
+  category: Category = new Category();
+  categories: Array<Category> = [];
+  catId: Number;
+  user: User;
 
-  constructor(private httpClient: HttpClient, private videoService: VideoService, private router: Router) { }
+  constructor(private httpClient: HttpClient, private videoService: VideoService, private router: Router, private loginService: LoginService) { }
 
   ngOnInit(): void {
+
+    this.user = JSON.parse(this.loginService.getUser());
+
+    this.videoService.getAllCategoriesSpringBoot().subscribe(
+      resp => {
+          this.categories = resp;
+          console.log(this.categories);
+      }
+    )
   }
 
   public removeUser(){
@@ -46,6 +62,11 @@ export class UploadVideoComponent implements OnInit {
         this.videoStatus = 'Video not uploaded successfully';
       }
       this.video.creator = JSON.parse(localStorage.getItem('user')).userId;
+      this.categories.forEach(cat => {
+        if(this.catId == cat.catId){
+          this.video.categoryId = this.catId;
+        }
+      })
       this.videoService.uploadVideoDetails(this.video).subscribe(
         resp => {
           console.log(this.video);
@@ -59,8 +80,8 @@ export class UploadVideoComponent implements OnInit {
 
   }
 
-  // public saveVideo(){
-    
-  // }
+  public goToManagePage(){
+    this.router.navigate(['/manageVideos'])
+    }
 
 }

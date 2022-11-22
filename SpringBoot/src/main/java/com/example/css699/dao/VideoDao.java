@@ -53,7 +53,7 @@ public class VideoDao {
     }
 
     public Video saveVideo(Video video){
-        jdbcTemplate.update(Queries.UPDATE_VIDEO_DATA, video.getVidName(), video.getVidDescription(), video.getCreator(), new Date(System.currentTimeMillis()), video.getVidId());
+        jdbcTemplate.update(Queries.UPDATE_VIDEO_DATA, video.getVidName(), video.getVidDescription(), video.getCreator(), video.getCategoryId(), new Date(System.currentTimeMillis()), video.getVidId());
         return video;
     }
 

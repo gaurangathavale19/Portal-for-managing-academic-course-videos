@@ -4,6 +4,7 @@
     </button>
     <span>Internal Portal</span>
     <span class="menu-on-right"></span>
+    <button *ngIf="user.admin==true" mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/login" (click)="goToManagePage()">Manage</button>
     <button mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/login" (click)="removeUser()">Logout</button>
 </mat-toolbar>
 
@@ -22,6 +23,16 @@
         <mat-label>Description</mat-label>
         <textarea matInput placeholder="Enter the description" name="vidDescription" [(ngModel)] = "video.vidDescription" required></textarea>
         <mat-hint>Elaborate</mat-hint>
+      </mat-form-field>
+      <br><br>
+      <mat-form-field>
+        <mat-label>Category</mat-label>
+        <mat-select name="categoryName" [(ngModel)] = "catId" required>
+          <mat-option *ngFor="let category of categories" [value]="category.catId">
+            {{category.categoryName}}
+          </mat-option>
+        </mat-select>
+        
       </mat-form-field>
       <br><br>
       <!-- <input type="file" class="form-control"> -->

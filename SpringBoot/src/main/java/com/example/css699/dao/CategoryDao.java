@@ -31,4 +31,9 @@ public class CategoryDao {
         categories =  jdbcTemplate.query(Queries.GET_ALL_CATEGORIES, CategoryRowMapper.lambda);
         return categories;
     }
+
+    public Category getCategoryNameFromCategoryId(int categoryId){
+        Category category = jdbcTemplate.query(Queries.GET_CATEGORY_NAME_FROM_CATEGORY_ID, CategoryRowMapper.lambda, categoryId).get(0);
+        return category;
+    }
 }

@@ -4,7 +4,9 @@
     </button>
     <span>Internal Portal</span>
     <span class="menu-on-right"></span>
-    <button mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/login">Logout</button>
+    <button *ngIf="user.admin==true" mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/login" (click)="goToManagePage()">Manage</button>
+    <button mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/login" (click)="goToUploadPage()">Upload</button>
+    <button mat-raised-button style="margin-right: 2%;" routerLinkActive="active item" [routerLinkActiveOptions]="{exact : true}" routerLink="/login" (click)="removeUser()">Logout</button>
 </mat-toolbar>
 <div class="video-area">
     <h2>{{video.vidName}}</h2>
@@ -14,13 +16,13 @@
             data-setup='{"aspectRatio":"900:540"}'>
     </video>
     <div>
-        <button mat-raised-button color="primary" (click)="likeVideo(video.vidId)"><mat-icon class="likes">{{like_dislike_icon}}</mat-icon> {{video.likes}}</button>
-        <button mat-raised-button color="primary" (click)="restart()">Restart</button>
-        <button mat-raised-button color="primary" (click)="skip(-30)"><mat-icon>replay_30</mat-icon></button>
-        <button mat-raised-button color="primary" (click)="skip(30)"><mat-icon>forward_30</mat-icon></button>
+        <button class="video-buttons" mat-raised-button color="primary" (click)="likeVideo(video.vidId)"><mat-icon class="likes">{{like_dislike_icon}}</mat-icon> {{video.likes}}</button>
+        <button class="video-buttons" mat-raised-button color="primary" (click)="restart()">Restart</button>
+        <button class="video-buttons" mat-raised-button color="primary" (click)="skip(-30)"><mat-icon>replay_30</mat-icon></button>
+        <button class="video-buttons" mat-raised-button color="primary" (click)="skip(30)"><mat-icon>forward_30</mat-icon></button>
     </div>
     
-    <button mat-raised-button color="primary" (click)="openDialog(video)">Comment</button>
+    <button class="video-buttons" mat-raised-button color="primary" (click)="openDialog(video)">Comment</button>
     <h3>Comments</h3>
     <li *ngFor="let comment of comments">
         {{comment.commentString}}
