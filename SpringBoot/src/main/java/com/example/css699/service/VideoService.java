@@ -16,6 +16,8 @@ public interface VideoService {
 
     public Video saveVideoToFolder(MultipartFile videoFile) throws IOException;
 
+    public int changeStatus(int vidID, String status);
+
     public Video saveVideo(Video video);
 
     public List<Video> getAllVideos();

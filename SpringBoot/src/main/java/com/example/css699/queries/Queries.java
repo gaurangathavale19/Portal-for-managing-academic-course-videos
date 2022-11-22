@@ -25,5 +25,7 @@ public class Queries {
     public static final String GET_ALL_CATEGORIES = "SELECT * FROM CATEGORY";
     public static final String GET_COMMENT_BY_VID_ID = "SELECT * FROM COMMENT WHERE vidId = ?";
 
+    public static final String SET_STATUS = "UPDATE VIDEO SET status = ? WHERE vidID = ? ";
+
 
 }

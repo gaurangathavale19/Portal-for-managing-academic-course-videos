@@ -84,5 +84,9 @@ public class videoServiceImpl implements VideoService {
         return videoDao.checkIfVidLikedByUser(userId, vidId);
     }
 
+    @Override
+    public int changeStatus(int vidID, String status) {
+        return videoDao.changeStatus(vidID, status);
+    }
 
 }
